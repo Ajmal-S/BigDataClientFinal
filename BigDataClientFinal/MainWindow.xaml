@@ -130,7 +130,7 @@
             <TextBlock x:Name="t2N" HorizontalAlignment="Left" Margin="757,10,0,0" TextWrapping="Wrap" Text="Team 2" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
             <TextBlock x:Name="t1Bat" HorizontalAlignment="Left" Margin="160,116,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
             <TextBlock x:Name="t2Bowl" HorizontalAlignment="Left" Margin="450,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
-            <DataGrid x:Name="t1Bats" Margin="160,140,971,166" ></DataGrid>
+            
             <TextBlock x:Name="t2Bat" HorizontalAlignment="Left" Margin="757,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
             <TextBlock x:Name="t1Bowl" HorizontalAlignment="Left" Margin="1047,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
         </Grid>
