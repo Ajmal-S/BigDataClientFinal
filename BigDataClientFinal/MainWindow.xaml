@@ -1,0 +1,142 @@
+﻿<Window x:Class="BigDataClientFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BigDataClientFinal"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1367
+        ">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF1F1E1E">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup"/>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="184*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="253*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="startGrid" HorizontalAlignment="Left" Height="604" Margin="10,123,0,0" VerticalAlignment="Top" Width="1339" Grid.ColumnSpan="3" Background="#FF0049A2" Visibility="Hidden">
+            <Button x:Name="team1select" Content="SELECT TEAM 1" HorizontalAlignment="Left" Height="56" Margin="32,124,0,0" VerticalAlignment="Top" Width="336" Background="#FF12DA88" Foreground="#FFFFFBFB" FontSize="32" Click="team1select_Click"/>
+            <Button x:Name="team2select" Content="SELECT TEAM 2" HorizontalAlignment="Left" Height="56" Margin="32,392,0,0" VerticalAlignment="Top" Width="336" Background="#FF12DA88" Foreground="#FFFFFBFB" FontSize="32" Click="team2select_Click"/>
+            <ComboBox x:Name="distCombo1" HorizontalAlignment="Left" Margin="705,124,0,0" VerticalAlignment="Top" Width="269" Height="56" SelectionChanged="comboBox_SelectionChanged" SelectedIndex="0" FontSize="32">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF19F00F" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ListBoxItem Content="UNIFORM" FontSize="32"/>
+                <ListBoxItem Content="RISKY" FontSize="32"/>
+                <ListBoxItem Content="SAFE" FontSize="32"/>
+            </ComboBox>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="656,36,0,0" TextWrapping="Wrap" Text="PROBABILITY DISTRIBUTION" VerticalAlignment="Top" Height="46" Width="410" FontSize="32" Foreground="#FFFBF2F2"/>
+            <ComboBox x:Name="distCombo2" HorizontalAlignment="Left" Margin="705,392,0,0" VerticalAlignment="Top" Width="269" Height="56" SelectionChanged="comboBox_SelectionChanged" SelectedIndex="0" FontSize="32">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF19F00F" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ListBoxItem Content="UNIFORM" FontSize="32"/>
+                <ListBoxItem Content="RISKY" FontSize="32"/>
+                <ListBoxItem Content="SAFE" FontSize="32"/>
+            </ComboBox>
+            <Image x:Name="t1selConf" HorizontalAlignment="Left" Height="88" Margin="462,110,0,0" VerticalAlignment="Top" Width="112" Source="greenT.png"/>
+            <Image x:Name="t2selConf" HorizontalAlignment="Left" Height="88" Margin="462,375,0,0" VerticalAlignment="Top" Width="112" Source="greenT.png"/>
+            <Button x:Name="playCricket" Content="" HorizontalAlignment="Left" Margin="1070,175,0,0" VerticalAlignment="Top" Width="240" Height="220" ToolTip="Play Game !" Cursor="Hand" BorderThickness="0" Style="{DynamicResource ButtonStyle1}" Click="playCricket_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="play.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <TextBlock x:Name="textBlock1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="83" Margin="10,10,0,0" TextWrapping="Wrap" Text="IPL SIMULATION" VerticalAlignment="Top" Width="453" Foreground="#FFF7F2F2" FontSize="53.333" TextAlignment="Center"/>
+        <Button x:Name="testButton" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="380,10,0,0" VerticalAlignment="Top" Width="164" Height="48" Click="testButton_Click" Visibility="Hidden"/>
+        <Grid x:Name="playGrid" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="604" Margin="10,123,0,0" VerticalAlignment="Top" Width="1339" Visibility="Hidden">
+            <Grid.Background>
+                <ImageBrush ImageSource="cr.jpg"/>
+            </Grid.Background>
+            <TextBlock x:Name="bowlN" HorizontalAlignment="Left" Margin="982,32,0,0" TextWrapping="Wrap" Text="bowlers name" VerticalAlignment="Top" Height="56" Width="319" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
+            <TextBlock x:Name="batN" HorizontalAlignment="Left" Margin="140,32,0,0" TextWrapping="Wrap" Text="batsmans name" VerticalAlignment="Top" Height="56" Width="319" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
+            <TextBlock x:Name="ballC" HorizontalAlignment="Left" Margin="61,144,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Height="43.96" Width="138.29" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center"/>
+            <TextBlock x:Name="innL" HorizontalAlignment="Left" Margin="72,100,0,0" TextWrapping="Wrap" Text="Innings 1" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontSize="32"/>
+            <local:ballDp x:Name="bdp" HorizontalAlignment="Left" Height="186" Margin="36,193,0,0" VerticalAlignment="Top" Width="196"/>
+            <TextBlock x:Name="t1L" HorizontalAlignment="Left" Margin="1062,144,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" Height="44" Width="135" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
+            <TextBlock x:Name="t2L" HorizontalAlignment="Left" Margin="1062,193,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" Height="56" Width="135" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
+            <TextBlock x:Name="t2R" HorizontalAlignment="Left" Margin="1202,205,-2,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="139" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center"/>
+            <TextBlock x:Name="t1R" HorizontalAlignment="Left" Margin="1202,153,-2,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="139" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center"/>
+            <Button x:Name="skIn1" Content="skip first&#xD;&#xA; innings" HorizontalAlignment="Left" Margin="1104,254,0,0" VerticalAlignment="Top" Width="225" Height="87" Background="#FFD81717" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="29.333" Click="skIn1_Click" Visibility="Hidden"/>
+            <Button x:Name="skIn2" Content="skip second&#xA; innings" HorizontalAlignment="Left" Margin="1104,358,0,0" VerticalAlignment="Top" Width="225" Height="87" Background="#FFD81717" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="29.333" Click="skIn2_Click" Visibility="Hidden"/>
+            <Button x:Name="res" Content="match summary" HorizontalAlignment="Left" Margin="1008,495,0,0" VerticalAlignment="Top" Width="321" Height="73" Background="#FF009335" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="40" Click="res_Click" FontWeight="Bold"/>
+        </Grid>
+        <Grid x:Name="ResultsGrid" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="604
+              " Margin="10,123,0,0" VerticalAlignment="Top" Width="1339">
+            <Grid.Background>
+                <ImageBrush ImageSource="bailey-dhoni-ipl-640.jpg"/>
+            </Grid.Background>
+            <Button x:Name="restart" Content="Next Game!!!" HorizontalAlignment="Left" Margin="1064,502,0,0" VerticalAlignment="Top" Width="265" Height="92" Background="#FF0DCD53" BorderBrush="#FFFDFBFB" Foreground="#FFFDF8F8" BorderThickness="0" Opacity="0.85" FontSize="42.667" Click="restart_Click"/>
+            <Rectangle Fill="#FFCF0B0B" HorizontalAlignment="Left" Height="453" Margin="160,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" Opacity="0.75" StrokeThickness="0"/>
+            <Rectangle Fill="#FF140BCF" HorizontalAlignment="Left" Height="453" Margin="757,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" Opacity="0.75" StrokeThickness="0"/>
+            <TextBlock x:Name="t1N" HorizontalAlignment="Left" Margin="160,10,0,0" TextWrapping="Wrap" Text="rc" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
+            <TextBlock x:Name="t2N" HorizontalAlignment="Left" Margin="757,10,0,0" TextWrapping="Wrap" Text="rc" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
+            <TextBlock x:Name="t1Bat" HorizontalAlignment="Left" Margin="160,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
+            <TextBlock x:Name="t2Bowl" HorizontalAlignment="Left" Margin="450,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
+            <TextBlock x:Name="t2Bat" HorizontalAlignment="Left" Margin="757,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
+            <TextBlock x:Name="t1Bowl" HorizontalAlignment="Left" Margin="1047,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
+        </Grid>
+
+    </Grid>
+</Window>
