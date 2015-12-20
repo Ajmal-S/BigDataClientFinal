@@ -124,16 +124,16 @@
                 <ImageBrush ImageSource="bailey-dhoni-ipl-640.jpg"/>
             </Grid.Background>
             <Button x:Name="restart" Content="Next Game!!!" HorizontalAlignment="Left" Margin="1064,502,0,0" VerticalAlignment="Top" Width="265" Height="92" Background="#FF0DCD53" BorderBrush="#FFFDFBFB" Foreground="#FFFDF8F8" BorderThickness="0" Opacity="0.85" FontSize="42.667" Click="restart_Click"/>
-            <Rectangle Fill="#FFCF0B0B" HorizontalAlignment="Left" Height="453" Margin="160,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" Opacity="0.75" StrokeThickness="0"/>
+            <Rectangle Fill="#BFCF0B0B" HorizontalAlignment="Left" Height="453" Margin="160,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" StrokeThickness="0"/>
             <Rectangle Fill="#FF140BCF" HorizontalAlignment="Left" Height="453" Margin="757,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" Opacity="0.75" StrokeThickness="0"/>
             <TextBlock x:Name="t1N" HorizontalAlignment="Left" Margin="160,10,0,0" TextWrapping="Wrap" Text="Team 1" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
             <TextBlock x:Name="t2N" HorizontalAlignment="Left" Margin="757,10,0,0" TextWrapping="Wrap" Text="Team 2" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
-            <TextBlock x:Name="t1Bat" HorizontalAlignment="Left" Margin="160,116,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
-            <TextBlock x:Name="t2Bowl" HorizontalAlignment="Left" Margin="450,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
-            
-            <TextBlock x:Name="t2Bat" HorizontalAlignment="Left" Margin="757,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
-            <TextBlock x:Name="t1Bowl" HorizontalAlignment="Left" Margin="1047,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
+            <DataGrid x:Name="t1Bats" Margin="172,114,959,194" RowHeight="30" ColumnWidth="100" IsReadOnly="True" Background="#BFA6120F" Foreground="Black" BorderBrush="{x:Null}" ></DataGrid>
+            <DataGrid x:Name="t1Bowls" Margin="423,114,698,194" RowHeight="30" IsReadOnly="True" Background="#BFA6120F" Foreground="Black" BorderBrush="{x:Null}" />
+            <DataGrid x:Name="t2Bats" Margin="771,114,360,194" RowHeight="30" ColumnWidth="100" IsReadOnly="True" Background="#BF1D12A3" Foreground="Black" BorderBrush="{x:Null}" />
+            <DataGrid x:Name="t2Bowls" Margin="1020,114,101,194" RowHeight="30"  IsReadOnly="True" Background="#BF2416A4" Foreground="Black" BorderBrush="{x:Null}" />
         </Grid>
+
 
     </Grid>
 </Window>

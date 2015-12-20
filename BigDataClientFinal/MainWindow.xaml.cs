@@ -20,6 +20,35 @@ using System.Threading;
 
 namespace BigDataClientFinal
 {
+    //Batsman Class
+    public class Batsman
+    {
+        public string Name { get; set; }
+        public int Runs { get; set; }
+
+        public Batsman(string Name,int Runs)
+        {
+            this.Name = Name;
+            this.Runs = Runs;
+        }
+    }
+
+    //Bowler Class
+    public class Bowler
+    {
+        public string Name { get; set; }
+        public int Balls { get; set; }
+        public int Runs { get; set; }
+        public int Wickets { get; set; }
+
+        public Bowler(string Name, int Balls, int Runs, int Wickets)
+        {
+            this.Name = Name;
+            this.Balls = Balls;
+            this.Runs = Runs;
+            this.Wickets = Wickets;
+        }
+    }
     public partial class MainWindow : Window
     {
         public Dictionary<string, int> clusters = new Dictionary<string, int>();
@@ -146,6 +175,59 @@ namespace BigDataClientFinal
 
         }
 
+        //Function to generate datasource for datagrid for Team 1 Batsman
+        private List<Batsman> LoadBatsmanData1()
+        {
+            List<Batsman> batsman = new List<Batsman>();
+            foreach (var key in in1.batsman.Keys)
+            {
+                if (in1.batsman[key] != 0)
+                {
+                    Batsman btemp = new Batsman(key, in1.batsman[key]);
+                    batsman.Add(btemp);
+                }
+            }
+            return batsman;
+        }
+        //Function to generate datasource for datagrid for Team 2 Batsman
+        private List<Batsman> LoadBatsmanData2()
+        {
+            List<Batsman> batsman = new List<Batsman>();
+            foreach (var key in in2.batsman.Keys)
+            {
+                if (in2.batsman[key] != 0)
+                {
+                    Batsman btemp = new Batsman(key, in2.batsman[key]);
+                    batsman.Add(btemp);
+                }
+            }
+            return batsman;
+        }
+
+        //Function to generate datasource for datagrid for Team 1 Bowlers
+        private List<Bowler> LoadBowlerData1()
+        {
+            List<Bowler> bowler = new List<Bowler>();
+            foreach (var key in in1.bowlers.Keys)
+            {
+                    Bowler btemp = new Bowler(key, in1.bowlers[key][0], in1.bowlers[key][1], in1.bowlers[key][2]);
+                    bowler.Add(btemp);
+            }
+            return bowler;
+        }
+
+        //Function to generate datasource for datagrid for Team 2 Bowlers
+        private List<Bowler> LoadBowlerData2()
+        {
+            List<Bowler> bowler = new List<Bowler>();
+            foreach (var key in in2.bowlers.Keys)
+            {
+                Bowler btemp = new Bowler(key, in2.bowlers[key][0], in2.bowlers[key][1], in2.bowlers[key][2]);
+                bowler.Add(btemp);
+            }
+            return bowler;
+        }
+
         private async void playCricket_Click(object sender, RoutedEventArgs e)
         {
             startGrid.Visibility = Visibility.Hidden;
@@ -158,7 +240,6 @@ namespace BigDataClientFinal
             bgimgbr.ImageSource = bgimg.Source;
             bgimgbr.Opacity = 85;
             playGrid.Background = bgimgbr;
-            int g = 0;
             cts = new CancellationTokenSource();
             d1 = distCombo1.SelectedIndex;
             await playMatchInit();
@@ -259,7 +340,7 @@ namespace BigDataClientFinal
                 b1 = bmen[0];
                 b2 = bmen[1];
                 bt = b1;
-                string op = "", r = "";
+                string op = "";
                 int x = 0;
                 for (int i = 0; i < 20; i++)
                 {
@@ -330,7 +411,7 @@ namespace BigDataClientFinal
                 b1 = bmen[0];
                 b2 = bmen[1];
                 bt = b1;
-                string op = "", r = "";
+                string op = "";
                 int x = 0;
                 for (int i = 0; i < 20; i++)
                 {
@@ -454,34 +535,10 @@ namespace BigDataClientFinal
             }
             t1N.Text = in1.name + " : " + in1.score + "/" + w1.ToString();
             t2N.Text = in2.name + " : " + in2.score + "/" + w2.ToString();
-            string b1 = "Bowlers: Ball Runs Wickets"+Environment.NewLine, b2 = "Bowlers: Ball Runs Wickets"+Environment.NewLine;
-            foreach(var key in in1.bowlers.Keys)
-            {
-                b1 += key + " " + in1.bowlers[key][0] + " " + in1.bowlers[key][1] + " " + in1.bowlers[key][2]+Environment.NewLine;
-            }
-            foreach (var key in in2.bowlers.Keys)
-            {
-                b2 += key + " " + in2.bowlers[key][0] + " " + in2.bowlers[key][1] + " " + in2.bowlers[key][2] + Environment.NewLine;
-            }
-            t2Bowl.Text = b1;
-            t1Bowl.Text = b2;
-            b1 =b2= "Batsman:" + Environment.NewLine;
-            foreach(var key in in1.batsman.Keys)
-            {
-                if (in1.batsman[key] != 0)
-                {
-                    b1 += key + " | " + in1.batsman[key] + " Runs" + Environment.NewLine;
-                }
-            }
-            foreach (var key in in2.batsman.Keys)
-            {
-                if (in2.batsman[key] != 0)
-                {
-                    b2 += key + " | " + in2.batsman[key] + " Runs" + Environment.NewLine;
-                }
-            }
-            t1Bat.Text = b1;
-            t2Bat.Text = b2;
+            t1Bowls.ItemsSource = LoadBowlerData1();
+            t2Bowls.ItemsSource = LoadBowlerData2();
+            t1Bats.ItemsSource = LoadBatsmanData1();
+            t2Bats.ItemsSource = LoadBatsmanData2();
         }
 
         private void restart_Click(object sender, RoutedEventArgs e)

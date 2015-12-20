@@ -159,10 +159,13 @@
     <Resource Include="bigData\clp5.txt" />
     <Resource Include="bigData\clp6.txt" />
     <Resource Include="bigData\Clusters.txt" />
-    <Resource Include="bigData\t1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bigData\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bigData\RCB.txt" />
+    <Resource Include="bigData\RR.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,3 @@
+Team RCB
+Batsman:M Rawat,RE Levi,S Singh,BB McCullum,CA Pujara,F du Plessis,G Gambhir,Umar Gul,SB Styris,AD Mathews,AR Patel
+Bowlers:Umar Gul,SB Styris,AD Mathews,AR Patel,Umar Gul,SB Styris,AD Mathews,AR Patel,Umar Gul,SB Styris,AD Mathews,AR Patel,Umar Gul,SB Styris,AD Mathews,AR Patel,Umar Gul,SB Styris,AD Mathews,AR Patel
