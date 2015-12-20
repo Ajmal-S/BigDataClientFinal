@@ -131,9 +131,6 @@
     <Resource Include="play.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cr.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="r0.png" />
     <Resource Include="r1.png" />
     <Resource Include="r2.png" />
@@ -143,25 +140,29 @@
     <Resource Include="stumps.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cl1.txt" />
-    <Resource Include="cl2.txt" />
-    <Resource Include="cl3.txt" />
-    <Resource Include="cl4.txt" />
-    <Resource Include="cl5.txt" />
-    <Resource Include="cl6.txt" />
-    <Resource Include="clp1.txt" />
-    <Resource Include="clp2.txt" />
-    <Resource Include="clp3.txt" />
-    <Resource Include="clp4.txt" />
-    <Resource Include="clp5.txt" />
-    <Resource Include="clp6.txt" />
-    <Resource Include="Clusters.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="postgame.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bailey-dhoni-ipl-640.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bigData\cl1.txt" />
+    <Resource Include="bigData\cl2.txt" />
+    <Resource Include="bigData\cl3.txt" />
+    <Resource Include="bigData\cl4.txt" />
+    <Resource Include="bigData\cl5.txt" />
+    <Resource Include="bigData\cl6.txt" />
+    <Resource Include="bigData\clp1.txt" />
+    <Resource Include="bigData\clp2.txt" />
+    <Resource Include="bigData\clp3.txt" />
+    <Resource Include="bigData\clp4.txt" />
+    <Resource Include="bigData\clp5.txt" />
+    <Resource Include="bigData\clp6.txt" />
+    <Resource Include="bigData\Clusters.txt" />
+    <Resource Include="bigData\t1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bigData\Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

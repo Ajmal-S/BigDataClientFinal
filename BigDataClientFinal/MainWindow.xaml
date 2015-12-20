@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BigDataClientFinal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1367
+        Title="IPL Simulation - Big Data" Height="768" Width="1367
         ">
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -106,34 +106,31 @@
         <TextBlock x:Name="textBlock1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="83" Margin="10,10,0,0" TextWrapping="Wrap" Text="IPL SIMULATION" VerticalAlignment="Top" Width="453" Foreground="#FFF7F2F2" FontSize="53.333" TextAlignment="Center"/>
         <Button x:Name="testButton" Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="380,10,0,0" VerticalAlignment="Top" Width="164" Height="48" Click="testButton_Click" Visibility="Hidden"/>
         <Grid x:Name="playGrid" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="604" Margin="10,123,0,0" VerticalAlignment="Top" Width="1339" Visibility="Hidden">
-            <Grid.Background>
-                <ImageBrush ImageSource="cr.jpg"/>
-            </Grid.Background>
-            <TextBlock x:Name="bowlN" HorizontalAlignment="Left" Margin="982,32,0,0" TextWrapping="Wrap" Text="bowlers name" VerticalAlignment="Top" Height="56" Width="319" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
-            <TextBlock x:Name="batN" HorizontalAlignment="Left" Margin="140,32,0,0" TextWrapping="Wrap" Text="batsmans name" VerticalAlignment="Top" Height="56" Width="319" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
-            <TextBlock x:Name="ballC" HorizontalAlignment="Left" Margin="61,144,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Height="43.96" Width="138.29" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center"/>
-            <TextBlock x:Name="innL" HorizontalAlignment="Left" Margin="72,100,0,0" TextWrapping="Wrap" Text="Innings 1" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontSize="32"/>
-            <local:ballDp x:Name="bdp" HorizontalAlignment="Left" Height="186" Margin="36,193,0,0" VerticalAlignment="Top" Width="196"/>
-            <TextBlock x:Name="t1L" HorizontalAlignment="Left" Margin="1062,144,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" Height="44" Width="135" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
-            <TextBlock x:Name="t2L" HorizontalAlignment="Left" Margin="1062,193,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" Height="56" Width="135" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA"/>
-            <TextBlock x:Name="t2R" HorizontalAlignment="Left" Margin="1202,205,-2,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="139" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center"/>
-            <TextBlock x:Name="t1R" HorizontalAlignment="Left" Margin="1202,153,-2,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="139" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center"/>
+            <TextBlock x:Name="bowlN" HorizontalAlignment="Left" Margin="982,32,0,0" TextWrapping="Wrap" Text="bowlers name" VerticalAlignment="Top" Height="56" Width="319" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA" Background="#CC2E2929"/>
+            <TextBlock x:Name="batN" HorizontalAlignment="Left" Margin="140,32,0,0" TextWrapping="Wrap" Text="batsmans name" VerticalAlignment="Top" Height="56" Width="319" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA" Background="#CC2E2929"/>
+            <TextBlock x:Name="ballC" HorizontalAlignment="Left" Margin="89,146,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Height="44" Width="86" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center" Background="#CC2E2929" RenderTransformOrigin="0.107,0.591"/>
+            <TextBlock x:Name="innL" HorizontalAlignment="Left" Margin="72,100,0,0" TextWrapping="Wrap" Text="Innings 1" VerticalAlignment="Top" Foreground="#FFFBF7F7" FontSize="32" Background="#CC2E2929"/>
+            <local:ballDp x:Name="bdp" HorizontalAlignment="Left" Height="186" Margin="38,197,0,0" VerticalAlignment="Top" Width="196"/>
+            <TextBlock x:Name="t1L" HorizontalAlignment="Left" Margin="1062,144,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" Height="44" Width="135" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA" Background="#CC2E2929"/>
+            <TextBlock x:Name="t2L" HorizontalAlignment="Left" Margin="1062,205,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" Height="44" Width="135" FontSize="40" TextAlignment="Center" Foreground="#FFFFEAEA" Background="#CC2E2929"/>
+            <TextBlock x:Name="t2R" HorizontalAlignment="Left" Margin="1202,205,-2,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="139" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center" Background="#CC2E2929"/>
+            <TextBlock x:Name="t1R" HorizontalAlignment="Left" Margin="1202,144,-2,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="139" Foreground="#FFF9F7F7" FontWeight="Bold" FontSize="32" TextAlignment="Center" Background="#CC2E2929"/>
             <Button x:Name="skIn1" Content="skip first&#xD;&#xA; innings" HorizontalAlignment="Left" Margin="1104,254,0,0" VerticalAlignment="Top" Width="225" Height="87" Background="#FFD81717" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="29.333" Click="skIn1_Click" Visibility="Hidden"/>
             <Button x:Name="skIn2" Content="skip second&#xA; innings" HorizontalAlignment="Left" Margin="1104,358,0,0" VerticalAlignment="Top" Width="225" Height="87" Background="#FFD81717" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="29.333" Click="skIn2_Click" Visibility="Hidden"/>
-            <Button x:Name="res" Content="match summary" HorizontalAlignment="Left" Margin="1008,495,0,0" VerticalAlignment="Top" Width="321" Height="73" Background="#FF009335" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="40" Click="res_Click" FontWeight="Bold"/>
+            <Button x:Name="res" Content="Scoreboard" HorizontalAlignment="Left" Margin="1008,495,0,0" VerticalAlignment="Top" Width="321" Height="73" Background="#FF009335" BorderThickness="0" Foreground="#FFFDEBEB" FontSize="40" Click="res_Click" FontWeight="Bold"/>
         </Grid>
-        <Grid x:Name="ResultsGrid" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="604
-              " Margin="10,123,0,0" VerticalAlignment="Top" Width="1339">
+        <Grid x:Name="ResultsGrid" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="604" Margin="10,123,0,0" VerticalAlignment="Top" Width="1339">
             <Grid.Background>
                 <ImageBrush ImageSource="bailey-dhoni-ipl-640.jpg"/>
             </Grid.Background>
             <Button x:Name="restart" Content="Next Game!!!" HorizontalAlignment="Left" Margin="1064,502,0,0" VerticalAlignment="Top" Width="265" Height="92" Background="#FF0DCD53" BorderBrush="#FFFDFBFB" Foreground="#FFFDF8F8" BorderThickness="0" Opacity="0.85" FontSize="42.667" Click="restart_Click"/>
             <Rectangle Fill="#FFCF0B0B" HorizontalAlignment="Left" Height="453" Margin="160,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" Opacity="0.75" StrokeThickness="0"/>
             <Rectangle Fill="#FF140BCF" HorizontalAlignment="Left" Height="453" Margin="757,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="498" Opacity="0.75" StrokeThickness="0"/>
-            <TextBlock x:Name="t1N" HorizontalAlignment="Left" Margin="160,10,0,0" TextWrapping="Wrap" Text="rc" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
-            <TextBlock x:Name="t2N" HorizontalAlignment="Left" Margin="757,10,0,0" TextWrapping="Wrap" Text="rc" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
-            <TextBlock x:Name="t1Bat" HorizontalAlignment="Left" Margin="160,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
+            <TextBlock x:Name="t1N" HorizontalAlignment="Left" Margin="160,10,0,0" TextWrapping="Wrap" Text="Team 1" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
+            <TextBlock x:Name="t2N" HorizontalAlignment="Left" Margin="757,10,0,0" TextWrapping="Wrap" Text="Team 2" VerticalAlignment="Top" Height="85" Width="498" Foreground="White" FontSize="48" TextAlignment="Center"/>
+            <TextBlock x:Name="t1Bat" HorizontalAlignment="Left" Margin="160,116,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
             <TextBlock x:Name="t2Bowl" HorizontalAlignment="Left" Margin="450,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
+            <DataGrid x:Name="t1Bats" Margin="160,140,971,166" ></DataGrid>
             <TextBlock x:Name="t2Bat" HorizontalAlignment="Left" Margin="757,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" Foreground="#FFF7F7F7" FontSize="16"/>
             <TextBlock x:Name="t1Bowl" HorizontalAlignment="Left" Margin="1047,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="322" Width="208" FontSize="16" Foreground="#FFF9F6F6"/>
         </Grid>

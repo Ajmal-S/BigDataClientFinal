@@ -20,9 +20,6 @@ using System.Threading;
 
 namespace BigDataClientFinal
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public Dictionary<string, int> clusters = new Dictionary<string, int>();
@@ -74,31 +71,33 @@ namespace BigDataClientFinal
             t1selConf.Visibility = Visibility.Hidden;
             t2selConf.Visibility = Visibility.Hidden;
             //replace with path of Clusters.txt in your comp
-            string dump = File.ReadAllText(@"e:\bigData\Clusters.txt");
-            var l = dump.Split(';');
-            for(int i=0;i<l.Length;i++)
+            try
             {
-                string g = l[i];
-                g = g.Remove(0, 1);
-                g = g.Remove(g.Length - 1);
-                g=g.Replace(".txt", "");
-                l[i] = g;
-            }
-            for (int i = 0; i < l.Length; i++)
-            {
-                var t = l[i].Split(',');
-                for(int j = 0; j < t.Length; j++)
+                string dump = File.ReadAllText(@"e:\bigData\Clusters.txt");
+                var l = dump.Split(';');
+                for (int i = 0; i < l.Length; i++)
                 {
-                    clusters[t[j]] = i;
+                    string g = l[i];
+                    g = g.Remove(0, 1);
+                    g = g.Remove(g.Length - 1);
+                    g = g.Replace(".txt", "");
+                    l[i] = g;
                 }
-            }
-            for(int i = 0; i < clusterPvP.Length; i++)
-            {
-                //repalce e:\\bigData\ with wherever you store the probability files
-                string fn = @"e:\bigData\clp"+(i+1)+".txt";
-                string s = File.ReadAllText(fn);
-                var p = s.Split(';');
-                for (int k = 0; k < p.Length; k++)
+                for (int i = 0; i < l.Length; i++)
+                {
+                    var t = l[i].Split(',');
+                    for (int j = 0; j < t.Length; j++)
+                    {
+                        clusters[t[j]] = i;
+                    }
+                }
+                for (int i = 0; i < clusterPvP.Length; i++)
+                {
+                    //repalce e:\\bigData\ with wherever you store the probability files
+                    string fn = @"e:\bigData\clp" + (i + 1) + ".txt";
+                    string s = File.ReadAllText(fn);
+                    var p = s.Split(';');
+                    for (int k = 0; k < p.Length; k++)
                     {
                         var x = p[k].Split(':');
                         int key = Int32.Parse(x[0]);
@@ -106,6 +105,11 @@ namespace BigDataClientFinal
                         List<double> val = v1.Select(z => double.Parse(z)).ToList();
                         clusterPvP[i][key] = val;
                     }
+                }
+            }
+            catch (Exception er)
+            {
+                Console.WriteLine(er.Message);
             }
         }
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -118,23 +122,27 @@ namespace BigDataClientFinal
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             //replace text with default directory where you're keeping teams
-            openFileDialog1.InitialDirectory = "e:\\bigData\\";
-
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.ShowDialog();
-            Team2 = File.ReadAllLines(openFileDialog1.FileName).ToList();
-            t2selConf.Visibility = Visibility.Visible;
-            in2.name = openFileDialog1.SafeFileName.Replace(".txt", "");
-            in2.batsman = new Dictionary<string, int>();
-            in2.bowlers = new Dictionary<string, int[]>();
-            
-            foreach(string n in Team2[1].Split(':')[1].Split(','))
+            try
             {
-                in2.batsman[n] = 0;
+                openFileDialog1.InitialDirectory = "e:\\bigData\\";
+                openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 2;
+                openFileDialog1.ShowDialog();
+                Team2 = File.ReadAllLines(openFileDialog1.FileName).ToList();
+                t2selConf.Visibility = Visibility.Visible;
+                in2.name = openFileDialog1.SafeFileName.Replace(".txt", "");
+                in2.batsman = new Dictionary<string, int>();
+                in2.bowlers = new Dictionary<string, int[]>();
+                foreach (string n in Team2[1].Split(':')[1].Split(','))
+                {
+                    in2.batsman[n] = 0;
+                }
             }
-            
+            catch(Exception er)
+            {
+                MessageBox.Show("Please select a valid team.", "Team Selection", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                Console.WriteLine(er.Message);
+            }
 
         }
 
@@ -142,7 +150,14 @@ namespace BigDataClientFinal
         {
             startGrid.Visibility = Visibility.Hidden;
             playGrid.Visibility = Visibility.Visible;
-            
+
+            //Over image Change
+            ImageBrush bgimgbr = new ImageBrush();
+            Image bgimg = new Image();
+            bgimg.Source = new BitmapImage(new Uri("e:/bigData/Images/0.jpg"));
+            bgimgbr.ImageSource = bgimg.Source;
+            bgimgbr.Opacity = 85;
+            playGrid.Background = bgimgbr;
             int g = 0;
             cts = new CancellationTokenSource();
             d1 = distCombo1.SelectedIndex;
@@ -173,6 +188,10 @@ namespace BigDataClientFinal
                     {
                         ct = 6;
                         ov = Math.Round(ov);
+                        bgimg.Source = new BitmapImage(
+                            new Uri("e:/bigData/Images/"+(i%5).ToString()+".jpg"));
+                        bgimgbr.ImageSource = bgimg.Source;
+                        playGrid.Background = bgimgbr;
                     }
                     batN.Text = inn1[i].Split(';')[1];
                     bowlN.Text = inn1[i].Split(';')[0];
@@ -201,6 +220,10 @@ namespace BigDataClientFinal
                     {
                         ct = 6;
                         ov = Math.Round(ov);
+                        bgimg.Source = new BitmapImage(
+                            new Uri("e:/bigData/Images/" + (i % 5).ToString() + ".jpg"));
+                        bgimgbr.ImageSource = bgimg.Source;
+                        playGrid.Background = bgimgbr;
                     }
                     batN.Text = inn2[i].Split(';')[1];
                     bowlN.Text = inn2[i].Split(';')[0];
@@ -540,21 +563,29 @@ namespace BigDataClientFinal
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             //replace text with default directory where you're keeping teams
-            openFileDialog1.InitialDirectory = "e:\\bigData\\";
-
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.ShowDialog();
-            Team1 = File.ReadAllLines(openFileDialog1.FileName).ToList();
-            t1selConf.Visibility = Visibility.Visible;
-            in1.name = openFileDialog1.SafeFileName.Replace(".txt", "");
-            in1.batsman = new Dictionary<string, int>();
-            in1.bowlers = new Dictionary<string, int[]>();
-
-            foreach (string n in Team1[1].Split(':')[1].Split(','))
+            try
             {
-                in1.batsman[n] = 0;
+                openFileDialog1.InitialDirectory = "e:\\bigData\\";
+
+                openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+
+                openFileDialog1.FilterIndex = 2;
+                openFileDialog1.ShowDialog();
+                Team1 = File.ReadAllLines(openFileDialog1.FileName).ToList();
+                t1selConf.Visibility = Visibility.Visible;
+                in1.name = openFileDialog1.SafeFileName.Replace(".txt", "");
+                in1.batsman = new Dictionary<string, int>();
+                in1.bowlers = new Dictionary<string, int[]>();
+
+                foreach (string n in Team1[1].Split(':')[1].Split(','))
+                {
+                    in1.batsman[n] = 0;
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Please select a valid team.", "Team Selection", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                Console.WriteLine(er.Message);
             }
             
 
