@@ -3,20 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using MathNet.Numerics.Distributions;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Web.UI;
 using System.Threading;
+using System.Speech.Synthesis;
 
 namespace BigDataClientFinal
 {
@@ -233,6 +227,9 @@ namespace BigDataClientFinal
             startGrid.Visibility = Visibility.Hidden;
             playGrid.Visibility = Visibility.Visible;
 
+            //Voice Synth
+            SpeechSynthesizer comm = new SpeechSynthesizer();
+            
             //Over image Change
             ImageBrush bgimgbr = new ImageBrush();
             Image bgimg = new Image();
@@ -257,6 +254,10 @@ namespace BigDataClientFinal
             //MessageBox.Show(in1.score.ToString());  
             //MessageBox.Show(in2.score.ToString());
             //MessageBox.Show("do");
+
+            //Welcome Message
+            comm.Speak("Welcome to " + in1.name + " versus " + in2.name + " " + in1.name + " will bat first.");
+
             int sc = 0;
             double ov = 0.0;
             int ct = 6;
@@ -282,6 +283,13 @@ namespace BigDataClientFinal
                     ct--;
                     ov += 0.1;
                     VisualStateManager.GoToState(bdp, inn1[i].Split(';')[3], true);
+                    int runs_scored_current_ball = Int32.Parse(inn1[i].Split(';')[2]);
+                    if (runs_scored_current_ball != 0 && playGrid.IsVisible)
+                        comm.SpeakAsync("Its been hit for a " + runs_scored_current_ball);
+                    else if(playGrid.IsVisible && inn1[i].Split(';')[3]!="wick")
+                        comm.SpeakAsync("That's a dot ball");
+                    else if(playGrid.IsVisible)
+                        comm.SpeakAsync("That's a wicket!");
                     await pause(2);
                     VisualStateManager.GoToState(bdp, "none", false);
                     await pause(1);
@@ -314,6 +322,13 @@ namespace BigDataClientFinal
                     ct--;
                     ov += 0.1;
                     VisualStateManager.GoToState(bdp, inn2[i].Split(';')[3], true);
+                    int runs_scored_current_ball = Int32.Parse(inn2[i].Split(';')[2]);
+                    if (runs_scored_current_ball != 0 && playGrid.IsVisible)
+                        comm.SpeakAsync("Its been hit for a " + runs_scored_current_ball);
+                    else if (playGrid.IsVisible && inn2[i].Split(';')[3] != "wick")
+                        comm.SpeakAsync("That's a dot ball");
+                    else if (playGrid.IsVisible)
+                        comm.SpeakAsync("That's a wicket!");
                     await pause(2);
                     VisualStateManager.GoToState(bdp, "none", false);
                     await pause(1);
